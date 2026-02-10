@@ -1,6 +1,6 @@
 /* Write your T-SQL query statement below */
-SELECT
-    email
+SELECT 
+	email
 FROM Person
 GROUP BY email
-HAVING COUNT(email) > 1;
+HAVING COUNT(email) >= 2;
