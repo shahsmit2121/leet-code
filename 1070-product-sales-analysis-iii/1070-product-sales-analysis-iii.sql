@@ -1,11 +1,15 @@
 SELECT 
-    product_id,
-    year AS first_year,
-    quantity,
-    price
-FROM (
-    SELECT *,
-           MIN(year) OVER (PARTITION BY product_id) AS first_year
+    s.product_id,
+    s.year AS first_year,
+    s.quantity,
+    s.price
+FROM Sales s
+JOIN (
+    SELECT 
+        product_id,
+        MIN(year) AS first_year
     FROM Sales
-) t
-WHERE year = first_year;
+    GROUP BY product_id
+) f
+ON s.product_id = f.product_id
+AND s.year = f.first_year;
