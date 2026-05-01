@@ -1,8 +1,8 @@
 /* Write your T-SQL query statement below */
 WITH cumm_weight AS (
     SELECT 
-        *,
-        SUM(weight) OVER(ORDER BY turn ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as cumulative_weight
+        person_name
+        SUM(weight) OVER(ORDER BY turn) as cumulative_weight
     FROM 
         Queue
 )
