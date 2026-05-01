@@ -19,4 +19,3 @@ FROM
 WHERE 
     fd.rank = 1
     AND fd.order_date = fd.customer_pref_delivery_date
-
